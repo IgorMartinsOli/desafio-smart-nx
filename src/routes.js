@@ -4,7 +4,11 @@ const PostController = require('./controllers/PostController');
 const ComentController = require('./controllers/ComentController');
 
 router.get('/posts', PostController.index)
-router.post('/posts', PostController.store)
+router.get('/post/:postId', PostController.findByPk)
+router.post('/post/new', PostController.store)
+router.delete('/post/:postId', PostController.delete)
 
-router.post('posts/:postId/coment', ComentController.store)
+router.get('/posts/:postId/coment', ComentController.index)
+router.post('/posts/:postId/coment', ComentController.store)
+router.delete('/posts/:postId/coment/:comentId', ComentController.delete)
 module.exports = router;

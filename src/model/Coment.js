@@ -9,7 +9,9 @@ class Coment extends Model {
             sequelize
         })
     }
-
+    static associate(models) {
+        this.belongsTo(models.Post, {foreignKey: 'postId', as: 'comentario'})
+    }
 }
 
 module.exports = Coment;
