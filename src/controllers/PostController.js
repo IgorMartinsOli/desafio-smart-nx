@@ -1,6 +1,12 @@
 const Post = require('../model/Post')
 
 module.exports = {
+    async index(req, res) {
+        const posts = await Post.findAll();
+
+        return res.json(posts);
+    },
+
     async store(req, res){
         const {description, urlImage } = req.body;
 
