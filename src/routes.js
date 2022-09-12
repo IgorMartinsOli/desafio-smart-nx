@@ -11,4 +11,5 @@ router.delete('/post/:postId', PostController.delete)
 router.get('/posts/:postId/coment', ComentController.index)
 router.post('/posts/:postId/coment', ComentController.store)
 router.delete('/posts/:postId/coment/:comentId', ComentController.delete)
+router.post('/posts/:postId/', ComentController.edit)
 module.exports = router;

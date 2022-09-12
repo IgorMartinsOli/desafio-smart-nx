@@ -46,5 +46,24 @@ module.exports = {
         }catch(err) {
             return res.status(404).json({message: err.message});
         }
+    },
+
+    async edit(req, res) {
+        const postId = req.params;
+        const {comentId, description, urlImage} = req.body;
+
+        const post = await Post.findByPk(postId);
+
+        if(!post){
+            return res.status(404).json({message: "Post not found"});
+        }
+
+        const coment = await Coment.findByPk(comentId);
+        coment.description = description;
+        coment.urlImage = urlImage;
+
+        const newComent = await Coment.save(newComent);
+
+        return res.status(200).json({newComent: newComent});
     }
 }
